@@ -1,0 +1,1224 @@
+/* 1. General */
+/* 1.1. Reset */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body, *, ::after, ::before {
+    box-sizing: border-box;
+}
+body {
+  color: #333;
+  font-size: 16px;
+  line-height: 24px;
+  /* font-family: ing_me_regular; */
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: visible;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+    outline: 0;
+}
+.text-center {
+    text-align: center !important;
+}
+.grey-row {
+    background: #f0f0f0;
+}
+h2, .title {
+    font-size: 24px;
+    margin: 30px 0;
+}
+h4 {
+    font-size: 20px;
+    line-height: 28px;
+    font-family: 'ing_me_bold';
+}
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text],
+select {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* 1.2. fonts */
+@font-face {
+    font-family: ing_me_bold;
+    src: url(/.resources/assets/fonts/INGMe/Latin/Bold/INGMeWeb-Bold.eot);
+    src: url(/.resources/assets/fonts/INGMe/Latin/Bold/INGMeWeb-Bold.eot) format("embedded-opentype"),
+    url(/.resources/assets/fonts/INGMe/Latin/Bold/INGMeWeb-Bold.woff2) format("woff2"),
+    url(/.resources/assets/fonts/INGMe/Latin/Bold/INGMeWeb-Bold.woff) format("woff"),
+    url(/.resources/assets/fonts/INGMe/Latin/Bold/INGMeWeb-Bold.ttf) format("truetype"),
+    url(/.resources/assets/fonts/INGMe/Latin/Bold/INGMeWeb-Bold.svg#ing_me_bold) format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 1.3. Keyframes */
+@keyframes reveal {
+    from {
+        clip-path: inset(0 100% 0 0);
+        margin-left: -80px
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+        margin-left: 0
+    }
+}
+
+@keyframes revealIE {
+    from {
+        margin-left: -80px;
+        opacity: 0
+    }
+
+    to {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+@keyframes conseal {
+    from {
+        clip-path: inset(0 0 0 0);
+        margin-left: 0
+    }
+
+    to {
+        clip-path: inset(0 100% 0 0);
+        margin-left: -80px;
+    }
+}
+
+@keyframes consealIE {
+    from {
+        margin-left: 0;
+        opacity: 1;
+    }
+
+    to {
+        margin-left: -80px;
+        opacity: 0;
+    }
+}
+
+
+/* 1. Layout */
+.layout {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+@media (min-width: 576px) {
+    .layout {
+        max-width:100%
+    }
+}
+
+@media (min-width: 768px) {
+    .layout {
+        max-width:745px
+    }
+}
+
+@media (min-width: 992px) {
+    .layout {
+        max-width:990px
+    }
+}
+
+@media (min-width: 1230px) {
+    .layout {
+        max-width:1230px
+    }
+}
+
+.layout-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    position: relative;
+}
+.ing-cards {
+    padding: 30px 0;
+    margin-bottom: 30px;
+}
+.ing-cards .item {
+    text-align: center;
+    padding: 15px;
+}
+.ing-cards.col-three .item {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+}
+.ing-cards.col-four .item {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+.ing-cards.col-five .item {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+@media (max-width: 576px){
+    .ing-cards.col-three .item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+    .ing-cards.col-four .item,
+    .ing-cards.col-five .item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 10px;
+    }
+    .ing-cards.col-five .item:last-child {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .ing-cards.col-five .item:last-child .icon-box-item-title {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+/* 2. Header */
+.custom_header {
+    min-height: 260px;
+    background: gray !important;
+    padding-top: 30px;
+}
+.headingbar-headline {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 32px 0;
+    display: none;
+}
+.headingbar-headline.active {
+    display: flex;
+}
+.headingbar-slot {
+    -webkit-font-smoothing: antialiased;
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: 700;
+    background-color: #ff6200;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 2px 16px 4px;
+    margin-bottom: 8px;
+}
+.heading-bars .headingbar-headline {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 32px 0;
+}
+
+@media (min-width: 576px) {
+    .headingbar-slot {
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+        clip-path: inset(0 100% 0 0);
+        display: inline-block;
+        position: relative;
+        animation-name: reveal;
+    }
+
+    .headingbar-slot:nth-child(1) {
+        animation-delay: .05s;
+    }
+    .headingbar-slot:nth-child(2) {
+        animation-delay: .15s;
+        left: 100px;
+    }
+    .conceal .headingbar-slot {
+        clip-path: inset(0 0 0 0);
+        animation-name: conseal;
+        animation-delay: 0 !important;
+    }
+}
+
+/* 3. Simulator */
+
+.calc_mecanica .calcWrapper {
+    background: #fff;
+    margin-bottom: 30px;
+}
+.calc_mecanica h2 {
+    margin-bottom: 30px;
+}
+.default-design .calcWrapper {
+    border-radius: 6px;
+    border: 1px solid #d9d9d9;
+}
+.calc_block {
+    position: relative;
+    border-bottom: 1px solid #d9d9d9;
+    padding-right: 360px;
+}
+.ing-ipotecar-f2f .calc_block {
+    padding: 0;
+}
+.default-design .calc_actions {
+    padding: 56px;
+}
+.firstRow {
+    padding-bottom: 40px;
+}
+.default-design .calcLabelBlock {
+    text-align: right;
+}
+.default-design .calc_input {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0 0 15px;
+}
+.calc_row input {
+    -webkit-border-radius: 3px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 3px;
+    -moz-background-clip: padding;
+    border-radius: 3px;
+    background-color: #d9d9d9;
+    border: 1px solid #d9d9d9;
+    color: #333;
+    text-align: right;
+    font-size: 16px;
+    line-height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 40px;
+    margin-right: 5px;
+    padding: 0 10px;
+}
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+.default-design .info_highlight {
+    background-color: #d9d9d9;
+}
+.info_highlight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 15px;
+}
+.spgTable {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.spgCell {
+    display: table-cell;
+    vertical-align: middle;
+}
+.calc_mecanica .item {
+    font-size: 24px;
+    line-height: 28px;
+}
+.info_highlight .item {
+    text-align: center;
+}
+.default-design .item {
+    color: #d9d9d9;
+    padding-bottom: 15px;
+}
+.item {
+    position: relative;
+    overflow: hidden;
+}
+.calc_detailed_results .rez_block {
+    margin-bottom: 4px;
+    padding: 0;
+}
+.spgCta {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.info_highlight .btn_xs {
+    font-size: 16px;
+}
+.default-design .btn_xs {
+    transition: all .2s ease;
+    -webkit-border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 4px;
+    -moz-background-clip: padding;
+    border-radius: 4px;
+    background-color: #ff6200;
+    position: relative;
+    text-align: center;
+    font-weight: 400;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 15px 10px 30px;
+    border: 1px solid transparent;
+}
+.default-design .btn_xs .ico_arrow {
+    position: absolute;
+    width: 16px;
+    height: 24px;
+    top: 50%;
+    margin-top: -12px;
+    left: 10px;
+    display: block;
+}
+.default-design .btn_xs .ico_arrow:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 0;
+    margin-top: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.calc_mecanica .item {
+    color: #ff6200;
+}
+
+.ing-ipotecar-f2f .calc_actions {
+    padding: 30px 15px;
+}
+.ing-ipotecar-f2f .firstRow {
+    padding-bottom: 15px;
+}
+.ing-ipotecar-f2f .rez_block_top.flex-container {
+    border-bottom: 1px solid #d9d9d9;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+.ing-ipotecar-f2f .calcLabelBlock {
+    position: relative;
+    padding: 0 105px 0 250px;
+    min-height: 50px;
+}
+.ing-ipotecar-f2f .spgLabel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 235px;
+    text-align: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.ing-ipotecar-f2f .calc_input {
+    position: absolute;
+    right: 0;
+    top: 8px;
+}
+.ing-ipotecar-f2f .calc_row input {
+    margin: 0;
+    width: 85px;
+    border-radius: 4px;
+    background: #fff;
+}
+.ing-ipotecar-f2f .calc_slider {
+    position: relative;
+    top: -10px;
+}
+body .ing-ipotecar-f2f .calc_detailed_results {
+    padding: 0;
+    align-items: stretch;
+}
+.ing-ipotecar-f2f .calc_detailed_col {
+    padding: 15px;
+    flex-basis: 50%;
+}
+.ing-ipotecar-f2f .calc_detailed_col:last-child {
+    border-left: 1px solid #d9d9d9;
+    background: #f0f0f0;
+    color: #333;
+}
+.ing-ipotecar-f2f .rez_block_top.flex-container {
+    display: block;
+}
+.show_variabil .rez_block_top {
+    min-height: 128px;
+}
+.ing-ipotecar-f2f .rez_block_top {
+    border-bottom: 1px solid #d9d9d9;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+.ing-ipotecar-f2f .calc_detailed_results .rez_result {
+    font-size: 16px;
+    color: #333;
+    float: right;
+    text-align: right;
+    min-width: 140px;
+}
+.ing-ipotecar-f2f .calc_detailed_results .rez_label,
+.ing-ipotecar-f2f .rez_result {
+    display: inline-block;
+}
+.ip-container {
+    position: relative;
+    padding-left: 20px;
+}
+.ip-wrapper {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.infopoint {
+    display: inline-block;
+    border-radius: 50%;
+    color: #fff;
+    background: #ff6200;
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 3px 0;
+    vertical-align: top;
+    margin-top: 4px;
+    position: absolute;
+    left: 0;
+    text-align: center;
+}
+.ip-content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    font-family: 'ing_me_regular';
+    background: #fff;
+    border: 1px solid #ff6200;
+    bottom: 10px;
+    min-width: 240px;
+    right: 0;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    line-height: 1.3;
+    z-index: 1;
+    text-align: left;
+}
+.infopoint:hover + .ip-content {
+    opacity: 1;
+    visibility: visible;
+}
+.ip-content:after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50%;
+    background: #fff;
+    transform: rotate(45deg);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff #ff6200 #ff6200 #fff;
+    border-radius: 2px;
+}
+.ing-ipotecar-f2f .spgCta {
+    text-align: left;
+}
+.ing-ipotecar-f2f .btn-scadentar {
+    float: right;
+    background: #fff;
+    color: #ff6200;
+    border: 1px solid #ff6200;
+}
+.ing-ipotecar-f2f .btn-scadentar .ico_arrow:after {
+    border-color: transparent transparent transparent #ff6200;
+}
+
+
+/*irs*/
+
+.irs {
+    position: relative;
+    display: block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.irs-line {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    outline: 0!important
+}
+
+.irs-line-left,.irs-line-mid,.irs-line-right {
+    position: absolute;
+    display: block;
+    top: 0
+}
+
+.irs-line-left {
+    left: 0;
+    width: 11%
+}
+
+.irs-line-mid {
+    left: 9%;
+    width: 82%
+}
+
+.irs-line-right {
+    right: 0;
+    width: 11%
+}
+
+.irs-bar {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 0
+}
+
+.irs-bar-edge {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0
+}
+
+.irs-shadow {
+    position: absolute;
+    display: none;
+    left: 0;
+    width: 0
+}
+
+.irs-slider {
+    position: absolute;
+    display: block;
+    cursor: default;
+    z-index: 1
+}
+
+.irs-slider.type_last {
+    z-index: 2
+}
+
+.irs-min {
+    position: absolute;
+    display: block;
+    left: 0;
+    cursor: default
+}
+
+.irs-max {
+    position: absolute;
+    display: block;
+    right: 0;
+    cursor: default
+}
+
+.irs-from,.irs-single,.irs-to {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    cursor: default;
+    white-space: nowrap
+}
+
+.irs-grid {
+    position: absolute;
+    display: none;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px
+}
+
+.irs-with-grid .irs-grid {
+    display: block
+}
+
+.irs-grid-pol {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 8px;
+    background: #000
+}
+
+.irs-grid-pol.small {
+    height: 4px
+}
+
+.irs-grid-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 9px;
+    line-height: 9px;
+    padding: 0 3px;
+    color: #000
+}
+
+.irs-disable-mask {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: -1%;
+    width: 102%;
+    height: 100%;
+    cursor: default;
+    background: rgba(0,0,0,0);
+    z-index: 2
+}
+
+.lt-ie9 .irs-disable-mask {
+    background: #000;
+    filter: alpha(opacity=0);
+    cursor: not-allowed
+}
+
+.irs-disabled {
+    opacity: .4
+}
+
+.irs-hidden-input {
+    position: absolute!important;
+    display: block!important;
+    top: 0!important;
+    left: 0!important;
+    width: 0!important;
+    height: 0!important;
+    font-size: 0!important;
+    line-height: 0!important;
+    padding: 0!important;
+    margin: 0!important;
+    outline: 0!important;
+    z-index: -9999!important;
+    background: 0 0!important;
+    border-style: solid!important;
+    border-color: transparent!important
+}
+
+.irs {
+    height: 55px
+}
+
+.irs-with-grid {
+    height: 75px
+}
+
+.irs-line {
+    height: 10px;
+    top: 33px;
+    background: #eee;
+    background: linear-gradient(to bottom,#ddd -50%,#fff 150%);
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    -moz-border-radius: 16px
+}
+
+.irs-line-left {
+    height: 8px
+}
+
+.irs-line-mid {
+    height: 8px
+}
+
+.irs-line-right {
+    height: 8px
+}
+
+.irs-bar {
+    height: 10px;
+    top: 33px;
+    border-top: 1px solid #428bca;
+    border-bottom: 1px solid #428bca;
+    background: #428bca;
+    background: linear-gradient(to top,#428bca 0,#7fc3e8 100%)
+}
+
+.irs-bar-edge {
+    height: 10px;
+    top: 33px;
+    width: 14px;
+    border: 1px solid #428bca;
+    border-right: 0;
+    background: #428bca;
+    background: linear-gradient(to top,#428bca 0,#7fc3e8 100%);
+    border-radius: 16px 0 0 16px;
+    -moz-border-radius: 16px 0 0 16px
+}
+
+.irs-shadow {
+    height: 2px;
+    top: 38px;
+    background: #000;
+    opacity: .3;
+    border-radius: 5px;
+    -moz-border-radius: 5px
+}
+
+.lt-ie9 .irs-shadow {
+    filter: alpha(opacity=30)
+}
+
+.irs-slider {
+    top: 25px;
+    width: 27px;
+    height: 27px;
+    border: 1px solid #aaa;
+    background: #ddd;
+    background: linear-gradient(to bottom,#fff 0,#dcdcdc 20%,#fff 100%);
+    border-radius: 27px;
+    -moz-border-radius: 27px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    cursor: pointer
+}
+
+.irs-slider.state_hover,.irs-slider:hover {
+    background: #fff
+}
+
+.irs-max,.irs-min {
+    color: #333;
+    font-size: 12px;
+    line-height: 1.333;
+    text-shadow: none;
+    top: 0;
+    padding: 1px 5px;
+    background: rgba(0,0,0,.1);
+    border-radius: 3px;
+    -moz-border-radius: 3px
+}
+
+.lt-ie9 .irs-max,.lt-ie9 .irs-min {
+    background: #ccc
+}
+
+.irs-from,.irs-single,.irs-to {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background: #428bca;
+    border-radius: 3px;
+    -moz-border-radius: 3px
+}
+
+.lt-ie9 .irs-from,.lt-ie9 .irs-single,.lt-ie9 .irs-to {
+    background: #999
+}
+
+.irs-grid {
+    height: 27px
+}
+
+.irs-grid-pol {
+    opacity: .5;
+    background: #428bca
+}
+
+.irs-grid-pol.small {
+    background: #999
+}
+
+.irs-grid-text {
+    bottom: 5px;
+    color: #99a4ac
+}
+.default-design .calcWrapper .irs-bar,.default-design .calcWrapper .irs-bar-edge {
+    background: #ff6200;
+    border-color: #ff6200
+}
+
+.default-design .calcWrapper .irs-bar-edge {
+    width: 25px
+}
+.default-design .calcWrapper .irs-slider {
+    -webkit-border-radius: 50%;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 50%;
+    -moz-background-clip: padding;
+    border-radius: 50%;
+    -webkit-box-shadow: none -4px 0 -4px #ff6200 inset;
+    -moz-box-shadow: none -4px 0 -4px #ff6200 inset;
+    box-shadow: none -4px 0 -4px #ff6200 inset;
+    background: #fff;
+    border: 1px solid #ff6200;
+    width: 49px;
+    height: 49px;
+    top: 13px;
+    cursor: pointer
+}
+.default-design .calcWrapper .irs-slider:after,.default-design .calcWrapper .irs-slider:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    margin-top: -7px;
+    width: 0;
+    height: 0;
+    border-style: solid
+}
+
+.default-design .calcWrapper .irs-slider:before {
+    left: 14px;
+    border-width: 7px 7px 7px 0;
+    border-color: transparent #ff6200 transparent transparent
+}
+
+.default-design .calcWrapper .irs-slider:after {
+    right: 14px;
+    border-width: 7px 0 7px 7px;
+    border-color: transparent transparent transparent #ff6200
+}
+.default-design .flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: horizontal;
+    -moz-flex-direction: horizontal;
+    -ms-flex-direction: horizontal;
+    flex-direction: horizontal;
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+    -ms-justify-content: space-around;
+    justify-content: space-around;
+    -ms-flex-pack: space-around;
+    -webkit-align-content: stretch;
+    -moz-align-content: stretch;
+    -ms-align-content: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin: 0;
+}
+.default-design .flex-item {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-ordinal-group: 0;
+    -moz-box-ordinal-group: 0;
+    -ms-flex-order: 0;
+    -webkit-order: 0;
+    order: 0;
+    -webkit-align-self: auto;
+    -moz-align-self: auto;
+    -ms-align-self: auto;
+    align-self: auto;
+}
+.calc_detailed_results {
+    padding: 20px;
+}
+.calc_detailed_results .rez_label {
+    font-size: 16px;
+    line-height: 18px;
+    color: #333;
+    display: block;
+    text-align: center;
+}
+.calc_detailed_results .rez_result {
+    font-family: ing_me_bold;
+    font-weight: 400;
+    font-style: normal;
+    color: #ff6200;
+    font-size: 18px;
+    line-height: 18px;
+    display: block;
+    text-align: center;
+}
+@media (max-width: 992px) {
+    .ing-ipotecar-f2f .calcLabelBlock {
+        padding: 60px 0 0;
+    }
+    .ing-ipotecar-f2f .spgLabel {
+        width: auto;
+        width: 100%;
+        padding-right: 100px;
+        height: auto;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 15px 100px 0 0;
+    }
+    .ing-ipotecar-f2f .calc_mobile-toggler {
+        display: flex!important;
+    }
+    .ing-ipotecar-f2f .calc_mt-item {
+        padding: 15px;
+        flex-basis: 50%;
+    }
+    .ing-ipotecar-f2f .calc_mt-item:hover {
+        color: #ff6200;
+    }
+    .ing-ipotecar-f2f .calc_mt-item:last-child {
+        background: #f0f0f0;
+    }
+    .ing-ipotecar-f2f .calc_detailed_results {
+        position: relative;
+    }
+    .ing-ipotecar-f2f .calc_detailed_col {
+        width: 100%;
+        flex-basis: 100%;
+        position: relative;
+        background: #fff;
+        border-radius: 0 0 8px 8px;
+    }
+    .ing-ipotecar-f2f .calc_detailed_col.active {
+        z-index: 2;
+    }
+    .ing-ipotecar-f2f .calc_detailed_col:last-child {
+        margin-left: -100%;
+        border: 0;
+    }
+    .ing-ipotecar-f2f .calc_detailed_col h4 {
+        display: none;
+    }
+}
+@media (max-width: 768px){
+    .calc_block {
+        padding-right: 0;
+    }
+    .default-design .calc_actions {
+        padding: 15px;
+    }
+    .info_highlight {
+        width: 100%;
+        height: auto;
+        position: static;
+        float: none;
+        padding: 15px;
+        font-size: 0;
+    }
+    .calc_mecanica:not(.ing-ipotecar-f2f) .calc_detailed_results {
+        border-radius: 6px;
+        padding: 15px;
+        background: #fff;
+        display: block !important;
+    }
+    .calc_detailed_results .rez_label {
+        padding-right: 10px;
+        display: inline-block !important;
+    }
+    .calc_detailed_results .rez_result {
+        display: inline-block;
+    }
+    .spgCta {
+        padding-top: 10px;
+    }
+    .ing-ipotecar-f2f .btn_xs {
+        width: 100%;
+    }
+    .ing-ipotecar-f2f .btn_xs:first-child {
+        margin-bottom: 15px;
+    }
+}
+
+
+/* 3. Form styling */
+.form_block {
+    max-width: 450px;
+    display: block;
+    margin: 0 auto;
+}
+.form_box {
+    padding: 0 0 45px;
+}
+.form_block input {
+    border: 1px solid #ced4da;
+    background: #fff;
+    color: #000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 6px 15px 5px;
+    text-align: left;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    line-height: 22px\9;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-family: inherit;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.input_row select {
+    margin-bottom: 15px;
+}
+.form_block label {
+    display: none;
+}
+.submit_btn {
+    display: inline-block;
+    background: #ff6200;
+    color: #fff;
+    border: 1px solid transparent;
+    border-color: #ff6200;
+    margin-top: 15px;
+}
+.btn_md:before, .submit_btn:before {
+    content: "";
+    display: inline-block;
+    margin-right: 10px;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 2px 0 0 2px;
+    width: 8px;
+    height: 8px;
+    transform: rotate(135deg);
+}
+
+
+
+.chosen-container {
+    margin-bottom: 15px;
+}
+.chosen-container-single .chosen-single {
+    padding-left: 15px;
+    height: 44px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #d9d9d9;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    text-align: left;
+}
+.chosen-container-active.chosen-with-drop .chosen-single {    
+    background: #e5e5e5;
+    border: 1px solid transparent;
+}
+.chosen-container-single .chosen-single span {
+    font-size: 18px;
+    line-height: 44px;
+    text-transform: none;
+    text-shadow: none;
+    margin-right: 65px;
+    color: #333;
+}
+.chosen-container .chosen-results li.active-result.highlighted {
+    background: #ff6200;
+}
+.terms-cond {
+    padding: 10px 0;
+}
+.terms-cond input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin-top: 3px;
+    margin-right: 10px;
+    float: left;
+}
+.terms-cond label {
+    color: #767676;
+    font-size: 14px;
+    text-align: left;
+    display: inline-block;
+    width: calc(100% - 35px);
+    text-align: justify;
+    margin-bottom: .5rem;
+}
+
+.alert-text {
+    text-align: left;
+    color: #c00;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.error {
+    color: #c00 !important;
+}
+.error.chosen-container-single .chosen-single span, select .error {
+    color: #c00 !important;
+}
+
+
+/* 5. Disclaimer */
+.inner_footnotes {
+    padding: 30px 0;
+}
+.inner_footnotes ul li {
+    list-style: none;
+    font-size: 14px;
+    line-height: 20px;
+    color: #767676;
+    margin-bottom: 10px;
+}
